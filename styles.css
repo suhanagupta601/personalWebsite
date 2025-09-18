@@ -1,0 +1,286 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  
+  body {
+    background-color: #000814; /*default*/
+    background: linear-gradient(
+      -45deg,
+       #4F1C51, #000814, #001d3d, #000814);
+      background-size: 400% 400%;
+      animation: gradient_bkg 10s ease infinite;
+  }
+
+  @keyframes gradient_bkg {
+    /*animation starts at the top left*/
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+
+  /* name logo */
+  div.logo {
+    font-size: 28px;
+    font-weight: bold;
+
+    position: relative;
+    left: 30px;
+    color: white;
+
+    background-clip: text;
+    background: -webkit-linear-gradient(#7400b8, #6930c3, #5e60ce);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from {
+      filter: drop-shadow(0 0 10px #5234ff);
+    }
+    to {
+      filter: drop-shadow(0 0 20px #5234ff);
+    }
+  }
+
+
+  /* hover over link pages to get gradient effect */
+  .navbar {
+    display: flex;
+    padding: 2%;
+    color: white;
+    font-family: monospace; 
+    align-items: center;
+}
+
+
+.nav-links {
+  position: relative;
+  font-size: 16px;
+  color: white;
+  display: flex;
+  justify-content: space-between; 
+  gap: 50px;
+  left: 780px;
+}
+
+.navbar .nav-links {
+  list-style: none;
+}
+
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  padding: 5px;
+  display: inline-block;
+  position: relative;
+
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: white;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+
+
+.nav-links a:hover {
+  text-decoration: none;
+  background-clip: text;
+  background: -webkit-linear-gradient(#7400b8, #6930c3, #5e60ce);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  }
+
+
+/* pfp image*/
+.placeholderIMG img {
+  border-radius: 250px;
+  height: 500px;
+  position: relative;
+  left: 70px;
+  top: 75px;
+}
+
+/* intro page */
+.intro {
+  color: white;
+  font-size: 36px;
+  font-weight: bold;
+  font-family: monospace;
+  float: left;
+  margin-left: 700px;
+  margin-top: -400px
+}
+
+.intro ul {
+  font-size: 20px;
+}
+
+#typewriter {
+  white-space: pre-line; /* makes \n show as newlines */
+}
+
+/* blinking cursor */
+#typewriter::after {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 1em;
+  background: white;
+  margin-left: 3px;
+  animation: blink 1s infinite;
+}
+
+/* to make the cursor blink, you make it visible then invisible at a state */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
+
+/* --------------------- ABOUT ME PAGE ---------------------- */
+.abtmeDescr {
+  color: white;
+  font-family:'Courier New', Courier, monospace;
+  padding: 5px 500px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.abtmeHeader {
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    margin-top: 250px;
+    text-align: center;
+    padding: 15px;
+    
+    background-clip: text;
+    background: -webkit-linear-gradient(#7400b8, #6930c3, #5e60ce);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+
+
+}
+
+
+
+/* --------------------- SKILLS PAGE ---------------------- */
+.listOfSkills {
+  font-size: 60px;
+    font-weight: bold;
+    color: white;
+    margin-top: 115px;
+    text-align: center;
+    padding: 10px;
+    
+    background-clip: text;
+    background: -webkit-linear-gradient(#7400b8, #6930c3, #5e60ce);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+
+
+/* --------------------- PROJECTS PAGE ---------------------- */
+.projectHeader {
+  font-size: 60px;
+    font-weight: bold;
+    color: white;
+    margin-top: 115px;
+    text-align: center;
+    padding: 10px;
+    
+    background-clip: text;
+    background: -webkit-linear-gradient(#7400b8, #6930c3, #5e60ce);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+
+/* --------------------- CONTACT PAGE ---------------------- */
+.contactHeader {
+  font-size: 60px;
+    font-weight: bold;
+    color: white;
+    margin-top: 115px;
+    text-align: center;
+    padding: 10px;
+    
+    background-clip: text;
+    background: -webkit-linear-gradient(#7400b8, #6930c3, #5e60ce);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

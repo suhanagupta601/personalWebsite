@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suhana Gupta</title>
+  <link rel="stylesheet" href="../CSS/styles.css">
+
+
+  
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+        <a href="#index">suhana gupta
+        </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">ABOUT</a></li>
+      <li><a href="#skills">SKILLS</a></li>
+      <li><a href="#projects">PROJECTS</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+    </ul>
+  </nav>
+
+  <!-- intro image -->
+  <div class="placeholderIMG">
+    <img src="/images/placeholder.jpeg" alt="place holder" width="500" height="700">
+  </div>
+
+    <!-------------- INTRO page ---------------->
+  <div class="intro">
+    <div class="typewriter-text" id="typewriter"></div>
+</div>
+
+
+    <!-------------- aboutMe page -------------->
+
+  <div id = "about" class="aboutMe">
+    <header>
+      <div class = abtmeHeader>
+      <h1>A Little Bit About Me</h1>
+    </div>
+    <div class = abtmeDescr>
+      <p>Hello again! My name is Suhana Gupta, studying computer science and Mathematics
+      at Northeastern University. Not only am I eager to explore and connect to the
+      various fields of computer science, but also collaborate amongst different 
+      individuals and bring perspective to the table. </p>
+      
+      <p>On the otherhand, when I am not debugging, you will find me sitting at my piano,
+      playing a Tchaiovsky piece, playing Taylor Swift on my guitar, reading thrillers, 
+      or DIYing. </p>
+    </div>
+    </header>
+  </div>
+
+
+
+
+
+      <!--------------- SKILLS page ---------------->
+       <div id = "skills" class = "skillsPage">
+        <div class = listOfSkills>
+          <ul style="list-style-type:none;">
+            <li>S</li>
+            <li>K</li>
+            <li>I</li>
+            <li>L</li>
+            <li>L</li>
+            <li>S</li>
+          </ul>
+        </div>
+       </div>
+
+
+      <!----------------- PROJECTS page ----------------->
+      <div id = "projects" class = "projectsPage">
+        <div class = projectHeader>
+          <header>
+            PROJECTS
+          </header>
+        </div>
+      </div>
+
+
+      <!---------------- CONTACT page ------------------->
+      <div id = "contact" class = "contactPage">
+        <div class = contactHeader>
+          <header>
+            c o n t a c t ~ m e
+          </header>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- JAVASCRIPT -->
+<script>
+  var i = 0;
+  var j = 0;
+  var wordIndex = 0;
+
+  var textTyped = "Hi, I'm Suhana Gupta\nI am a...\n";
+  var collegeStudent = "college student";
+  var programmer = "aspiring programmer";
+  var reader = "reader";
+  var musician = "musician";
+  var swiftie = "swiftie";
+
+  var listOfMe = [collegeStudent, programmer, reader, musician, swiftie];
+
+  var speed = 50;
+  var pause = 1000;
+
+  var typing = true;
+  var isDeleting = false;
+  var charIndex = 0;
+  var introDone = false;
+
+
+function typeWriter() {
+
+  // TYPING THE INTRO
+      if (!introDone) {
+        if (i < textTyped.length) {
+          document.getElementById("typewriter").innerHTML += textTyped.charAt(i);
+          i++;
+          setTimeout(typeWriter, speed);
+          return;
+      }
+
+      else {
+        introDone = true;
+      }
+    }
+
+      const currentWord = listOfMe[wordIndex];
+      let displayText = textTyped;
+
+      // TYPING AN ADJ.
+      if (!isDeleting) {
+        displayText += currentWord.substring(0, charIndex + 1);
+        charIndex++;
+
+        document.getElementById("typewriter").innerText = displayText;
+
+        if (charIndex < currentWord.length) {
+          setTimeout(typeWriter, speed);
+        }
+        else {
+        // word fully typed -> pause then start deleting
+        setTimeout(() => { isDeleting = true; typeWriter(); }, 
+        pause);
+      }
+      }
+
+      else {
+        // delete backward
+        displayText += currentWord.substring(0, charIndex - 1);
+        charIndex--;
+
+        document.getElementById("typewriter").innerText = displayText;
+
+        if (charIndex > 0) {
+          setTimeout(typeWriter, speed);
+        }
+
+        else {
+          isDeleting = false;
+          wordIndex = (wordIndex + 1) % listOfMe.length;
+          setTimeout(typeWriter, speed);
+        }
+      }
+
+  }
+  
+  window.onload = typeWriter;
+  </script>
+  </body>
+
+</html>
