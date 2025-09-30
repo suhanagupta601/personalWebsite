@@ -4,9 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Suhana Gupta</title>
-  <!--<link rel="stylesheet" href="../CSS/styles.css"> -->
   <link rel="stylesheet" href="styles.css">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
   
@@ -25,10 +24,37 @@
     </ul>
   </nav>
 
+  <!-- stars -->
+   <canvas id = "star"></canvas>
+
+
+
+
   <!-- intro image -->
-  <div class="placeholderIMG">
-    <img src="/images/placeholder.jpeg" alt="place holder" width="500" height="700">
+  <div class="pfpIMG">
+    <img id = "intro-imgs" src= "/introIMGs/img1.JPG" alt="place holder" width="500" height="700">
   </div>
+
+  <script>
+    // showing multiple images - intro
+    const introIMGs = ["/introIMGs/pfp.JPG", "/introIMGs/img2.JPG", "/introIMGs/img3.JPG", "/introIMGs/img1.JPG"];
+    let index = 0;
+    document.getElementById("intro-imgs").style.transition = "opacity 1s ease";
+
+    setInterval(() => {
+      document.getElementById("intro-imgs").style.opacity = 0;
+
+      setTimeout(() => {
+        index = (index + 1) % introIMGs.length;
+        document.getElementById("intro-imgs").src = introIMGs[index];
+        document.getElementById("intro-imgs").style.opacity = 1; 
+      }, 1000);
+    }, 4000);
+    </script>
+
+
+
+
 
     <!-------------- INTRO page ---------------->
   <div class="intro">
@@ -41,17 +67,24 @@
   <div id = "about" class="aboutMe">
     <header>
       <div class = abtmeHeader>
-      <h1>A Little Bit About Me</h1>
+      <h1>Dear Viewer,</h1>
     </div>
     <div class = abtmeDescr>
-      <p>Hello again! My name is Suhana Gupta, studying computer science and Mathematics
-      at Northeastern University. Not only am I eager to explore and connect to the
-      various fields of computer science, but also collaborate amongst different 
-      individuals and bring perspective to the table. </p>
-      
-      <p>On the otherhand, when I am not debugging, you will find me sitting at my piano,
-      playing a Tchaiovsky piece, playing Taylor Swift on my guitar, reading thrillers, 
-      or DIYing. </p>
+      <p>My name is Suhana Gupta! I am currently in my second year at Northeastern University,
+        studying Computer Science & Mathematics. Though this entire website is about my time studying
+      these two topics, I thought I would share a little bit about my personal life when I am not
+    busy debugging my OOD homework or watching Figma YouTube Tutorials.</p>
+
+    <p>During my free time (if I ever have time to touch grass), I like to go on walks through
+      the Boston Commons, read thriller novels (my current reads are all John Grisham novels),
+      sit by my piano and play my favorite Chopin piece, strum Taylor Swift's discography on my guitar,
+      or blast music through my headphones.</p>
+
+      <p>But what I am most excited to learn about is all the diverse perspectives
+        people bring to the table. Dare I say that is what I like most about collaborating
+        on projects. I believe opinions and beliefs are meant to be challenged and revised, or
+        be exposed to.
+      </p>
     </div>
     </header>
   </div>
@@ -82,6 +115,51 @@
             PROJECTS
           </header>
         </div>
+
+        <div id = "allProjects">
+      <!---calc--->
+      <div class = smartCalc>
+          <a href = "https://github.com/suhanagupta601/SimpleCalculator.git" target="_blank">          
+            <img src="/images/calcTempimg.png" alt="calc" width="300" height="200">
+          </a>
+          <a href = "https://github.com/suhanagupta601/SimpleCalculator/blob/main/README.md">
+          <h3>Smart Calculator</h3>
+        </a>
+        </div>
+
+      <!---calendar--->
+      <div class = cal>
+        <a href = "https://github.com/suhanagupta601/SimpleCalendarGUI.git" target="_blank">          
+          <img src="/images/calcTempimg.png" alt="calc" width="300" height="200">
+        </a>
+        <a href = "https://github.com/suhanagupta601/SimpleCalendarGUI/blob/main/README.md">
+        <h3>Simple Calendar</h3>
+      </a>
+      </div>
+
+
+      <!---ZType Game--->
+      <div class = ztype>
+        <a href = "https://github.com/suhanagupta601/ZTypeGame.git" target="_blank">          
+          <img src="/images/calcTempimg.png" alt="calc" width="300" height="200">
+        </a>
+        <a href = "https://github.com/suhanagupta601/ZTypeGame/blob/main/README.md">
+        <h3>ZType Game</h3>
+      </a>
+      </div>
+
+      <!---Connections--->
+      <div class = connections>
+        <a href = "https://github.com/suhanagupta601/NYTConnectionsRemake.git" target="_blank">          
+          <img src="/images/calcTempimg.png" alt="calc" width="300" height="200">
+        </a>
+        <a href = "https://github.com/suhanagupta601/NYTConnectionsRemake/blob/main/README.md">
+        <h3>Connections</h3>
+      </a>
+      </div>
+
+
+    </div>
       </div>
 
 
@@ -92,6 +170,9 @@
             c o n t a c t ~ m e
           </header>
         </div>
+
+        <a href="https://www.instagram.com/suhanagupta16?igsh=MWlrdWN4MTZheHBsbA%3D%3D&utm_source=qr" class="fa fa-instagram" target="_blank"></a>
+        <a href="https://www.linkedin.com/in/suhana-gupta/" class="fa fa-linkedin" target="_blank"></a>
       </div>
 
 
@@ -110,7 +191,7 @@
 
 
 
-    <!-- JAVASCRIPT -->
+    <!------------------- JAVASCRIPT -------------------->
 <script>
   var i = 0;
   var j = 0;
@@ -187,9 +268,7 @@ function typeWriter() {
           setTimeout(typeWriter, speed);
         }
       }
-
   }
-  
   window.onload = typeWriter;
   </script>
   </body>
