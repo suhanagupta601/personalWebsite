@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suhana Gupta</title>
+  <link rel="stylesheet" href="../CSS/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  
+</head>
+<body>
+
+   <!-- stars -->
+   <canvas id = "star"></canvas>
+
+   <script>
+    const canvas = document.getElementById("star");
+    const paintBrush = canvas.getContext("2d");
+    let stars = [];
+
+
+    //size it for entire screen
+    function fullCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener("resize", fullCanvas());
+    fullCanvas();
+
+    //making each star
+
+    for (let i = 0; i < 150; i++) {
+      //randomly place each star
+      stars.push({
+        x_pos: Math.random() * canvas.width,
+        y_pos: Math.random() * canvas.height,
+        radius: Math.random() * 1.5 + 0.5,
+        brightness: Math.random(),
+        twinkleSpeed: Math.random() * 0.02 + 0.005
+      })
+    }
+
+    function makeStars() {
+      paintBrush.clearRect(0, 0, canvas.width, canvas.height);
+
+     for (let i = 0; i < stars.length; i++ ) {
+      let s = stars[i];
+      //brighten each star respective to the twinkle speed
+      s.brightness += s.twinkleSpeed;
+
+      //now dim stars (reverse)
+      if (s.brightness <= 0 || s.brightness >= 1) {
+        s.twinkleSpeed *= -1;
+      }
+
+      // start drawing
+      paintBrush.beginPath();
+      paintBrush.arc(s.x_pos, s.y_pos, s.radius, 0, Math.PI*2);
+      paintBrush.fillStyle = `rgba(255, 255, 255, ${s.brightness})`;
+      paintBrush.shadowBlur = 10;
+      paintBrush.shadowColor = "white";
+      paintBrush.fill();
+     }
+     requestAnimationFrame(makeStars);      
+    }
+    makeStars();
+
+   </script>
+
+
+   <!-- --------------------------------- -->
+
+  
+  <nav class="navbar">
+    <div class="logo">
+        <a href="#index">suhana gupta
+        </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">ABOUT</a></li>
+      <li><a href="#skills">SKILLS</a></li>
+      <li><a href="#projects">PROJECTS</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+    </ul>
+  </nav>
+
+  <!-- intro image -->
+  <div id = "index" class="pfpIMG">
+    <img id = "intro-imgs" src= "/introIMGs/img1.JPG" alt="place holder" width="500" height="700">
+  </div>
+
+  <script>
+    // showing multiple images - intro
+    const introIMGs = ["/introIMGs/pfp.JPG", "/introIMGs/img2.JPG", "/introIMGs/img3.JPG", "/introIMGs/img1.JPG"];
+    let index = 0;
+    document.getElementById("intro-imgs").style.transition = "opacity 1s ease";
+
+    setInterval(() => {
+      document.getElementById("intro-imgs").style.opacity = 0;
+
+      setTimeout(() => {
+        index = (index + 1) % introIMGs.length;
+        document.getElementById("intro-imgs").src = introIMGs[index];
+        document.getElementById("intro-imgs").style.opacity = 1; 
+      }, 1000);
+    }, 4000);
+    </script>
+
+
+
+
+
+    <!-------------- INTRO page ---------------->
+  <div class="intro">
+    <div class="typewriter-text" id="typewriter"></div>
+</div>
+
+
+    <!-------------- aboutMe page -------------->
+
+  <div id = "about" class="aboutMe">
+    <header>
+      <div class = abtmeHeader>
+      <h1>Dear Viewer,</h1>
+    </div>
+    <div class = abtmeDescr>
+      <p>My name is Suhana Gupta! I am currently in my second year at Northeastern University,
+        studying Computer Science & Mathematics. Though this entire website is about my time studying
+      these two topics, I thought I would share a little bit about my personal life when I am not
+    busy debugging my OOD homework or watching Figma YouTube Tutorials.</p>
+
+    <p>During my free time (if I ever have time to touch grass), I like to go on walks through
+      the Boston Commons, read thriller novels (my current reads are all John Grisham novels),
+      sit by my piano and play my favorite Chopin piece, strum Taylor Swift's discography on my guitar,
+      or blast music through my headphones.</p>
+
+      <p>But what I am most excited to learn about is all the diverse perspectives
+        people bring to the table. Dare I say that is what I like most about collaborating
+        on projects. I believe opinions and beliefs are meant to be challenged and revised, or
+        be exposed to.
+      </p>
+    </div>
+    </header>
+  </div>
+
+
+
+
+
+      <!--------------- SKILLS page ---------------->
+       <div id = "skills" class = "skillsPage">
+        <div class = listOfSkills>
+          <ul style="list-style-type:none;">
+            <li>S</li>
+            <li>K</li>
+            <li>I</li>
+            <li>L</li>
+            <li>L</li>
+            <li>S</li>
+          </ul>
+        </div>
+       </div>
+
+
+      <!----------------- PROJECTS page ----------------->
+      <div id = "projects" class = "projectsPage">
+        <div class = projectHeader>
+          <header>
+            PROJECTS
+          </header>
+        </div>
+
+        <div id = "allProjects">
+      <!---calc--->
+      <div class = smartCalc>
+          <a href = "https://github.com/suhanagupta601/SimpleCalculator.git" target="_blank">          
+            <img src="/images/calcTempimg.png" alt="calc" width="300" height="200">
+          </a>
+          <a href = "https://github.com/suhanagupta601/SimpleCalculator/blob/main/README.md">
+          <h3>Smart Calculator</h3>
+        </a>
+        </div>
+
+      <!---calendar--->
+      <div class = cal>
+        <a href = "https://github.com/suhanagupta601/SimpleCalendarGUI.git" target="_blank">          
+          <img src="/images/calcTempimg.png" alt="calc" width="300" height="200">
+        </a>
+        <a href = "https://github.com/suhanagupta601/SimpleCalendarGUI/blob/main/README.md">
+        <h3>Simple Calendar</h3>
+      </a>
+      </div>
+
+
+      <!---ZType Game--->
+      <div class = ztype>
+        <a href = "https://github.com/suhanagupta601/ZTypeGame.git" target="_blank">          
+          <img src="/images/calcTempimg.png" alt="calc" width="300" height="200">
+        </a>
+        <a href = "https://github.com/suhanagupta601/ZTypeGame/blob/main/README.md">
+        <h3>ZType Game</h3>
+      </a>
+      </div>
+
+      <!---Connections--->
+      <div class = connections>
+        <a href = "https://github.com/suhanagupta601/NYTConnectionsRemake.git" target="_blank">          
+          <img src="/images/calcTempimg.png" alt="calc" width="300" height="200">
+        </a>
+        <a href = "https://github.com/suhanagupta601/NYTConnectionsRemake/blob/main/README.md">
+        <h3>Connections</h3>
+      </a>
+      </div>
+
+
+    </div>
+      </div>
+
+
+      <!---------------- CONTACT page ------------------->
+      <div id = "contact" class = "contactPage">
+        <a href="https://www.instagram.com/suhanagupta16?igsh=MWlrdWN4MTZheHBsbA%3D%3D&utm_source=qr" class="fa fa-instagram" target="_blank"></a>
+        <a href="https://www.linkedin.com/in/suhana-gupta/" class="fa fa-linkedin" target="_blank"></a>
+        <a href="mailto:suhanagupta16@gmail.com" class="fa fa-envelope" target="_blank"></a>
+        <a href="https://github.com/suhanagupta601" class="fa fa-github" target="_blank"></a>
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!------------------- JAVASCRIPT -------------------->
+<script>
+  var i = 0;
+  var j = 0;
+  var wordIndex = 0;
+
+  var textTyped = "Hi, I'm Suhana Gupta\nI am a...\n";
+  var collegeStudent = "college student";
+  var programmer = "aspiring programmer";
+  var reader = "reader";
+  var musician = "musician";
+  var swiftie = "swiftie";
+
+  var listOfMe = [collegeStudent, programmer, reader, musician, swiftie];
+
+  var speed = 50;
+  var pause = 1000;
+
+  var typing = true;
+  var isDeleting = false;
+  var charIndex = 0;
+  var introDone = false;
+
+
+function typeWriter() {
+
+  // TYPING THE INTRO
+      if (!introDone) {
+        if (i < textTyped.length) {
+          document.getElementById("typewriter").innerHTML += textTyped.charAt(i);
+          i++;
+          setTimeout(typeWriter, speed);
+          return;
+      }
+
+      else {
+        introDone = true;
+      }
+    }
+
+      const currentWord = listOfMe[wordIndex];
+      let displayText = textTyped;
+
+      // TYPING AN ADJ.
+      if (!isDeleting) {
+        displayText += currentWord.substring(0, charIndex + 1);
+        charIndex++;
+
+        document.getElementById("typewriter").innerText = displayText;
+
+        if (charIndex < currentWord.length) {
+          setTimeout(typeWriter, speed);
+        }
+        else {
+        // word fully typed -> pause then start deleting
+        setTimeout(() => { isDeleting = true; typeWriter(); }, 
+        pause);
+      }
+      }
+
+      else {
+        // delete backward
+        displayText += currentWord.substring(0, charIndex - 1);
+        charIndex--;
+
+        document.getElementById("typewriter").innerText = displayText;
+
+        if (charIndex > 0) {
+          setTimeout(typeWriter, speed);
+        }
+
+        else {
+          isDeleting = false;
+          wordIndex = (wordIndex + 1) % listOfMe.length;
+          setTimeout(typeWriter, speed);
+        }
+      }
+  }
+  window.onload = typeWriter;
+  </script>
+  </body>
+
+</html>
