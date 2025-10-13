@@ -268,7 +268,8 @@
 .pythonpic,
 .cpluspic,
 .reactpic,
-.tspic {
+.tspic,
+.javapic {
   padding: 10px;
   position: absolute;
 }
@@ -304,6 +305,10 @@
 .reactpic {
   left: 400px;
   top: 300px;
+}
+.javapic{
+  top: 300px;
+  left: 1300px;
 }
 
 
@@ -342,6 +347,10 @@
   width: 100px;
 }
 .tspic img {
+  height: 100px;
+  width: 100px;
+}
+.javapic img {
   height: 100px;
   width: 100px;
 }
