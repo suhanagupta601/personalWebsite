@@ -74,6 +74,47 @@
 
    </script>
 
+   <!-- scroll background transition: stars -> lilac -> light blue -> white -->
+   <script>
+    const bgStops = [
+      { p: 0,    colors: [[79, 28, 81],   [0, 8, 20],    [1, 21, 52]] },     // starry night (home)
+      { p: 0.55, colors: [[200, 162, 214],[209, 181, 228],[221, 205, 238]] },// light lilac
+      { p: 0.8,  colors: [[178, 224, 247],[191, 232, 251],[217, 242, 252]] },// light blue
+      { p: 1,    colors: [[255, 255, 255],[255, 255, 255],[255, 255, 255]] } // white
+    ];
+
+    function interpolateColor(c1, c2, t) {
+      return c1.map((v, i) => Math.round(v + (c2[i] - v) * t));
+    }
+
+    function getBackgroundColors(progress) {
+      for (let i = 0; i < bgStops.length - 1; i++) {
+        const cur = bgStops[i], next = bgStops[i + 1];
+        if (progress >= cur.p && progress <= next.p) {
+          const t = (progress - cur.p) / (next.p - cur.p);
+          return cur.colors.map((c, idx) => interpolateColor(c, next.colors[idx], t));
+        }
+      }
+      return bgStops[bgStops.length - 1].colors;
+    }
+
+    function updateScrollBackground() {
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = maxScroll > 0 ? Math.min(Math.max(window.scrollY / maxScroll, 0), 1) : 0;
+
+      const [c1, c2, c3] = getBackgroundColors(progress).map(c => `rgb(${c[0]}, ${c[1]}, ${c[2]})`);
+      document.body.style.background = `linear-gradient(-45deg, ${c1}, ${c2}, ${c3})`;
+      document.body.style.backgroundSize = "400% 400%";
+
+      // stars only belong to the home page, so fade them out early in the scroll
+      canvas.style.opacity = Math.max(1 - progress / 0.18, 0);
+    }
+
+    window.addEventListener("scroll", updateScrollBackground);
+    window.addEventListener("resize", updateScrollBackground);
+    updateScrollBackground();
+   </script>
+
 
    <!-- --------------------------------- -->
 

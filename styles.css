@@ -15,7 +15,7 @@
       -45deg,
       #4F1C51, #000814,#011534);
       background-size: 400% 400%;
-      
+
   }
 
   #star {
@@ -26,6 +26,7 @@
     height: 100%;
     z-index: 0;
     pointer-events: none;
+    transition: opacity 0.2s ease-out;
   }
 
   /* name logo */
